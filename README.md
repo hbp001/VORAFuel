@@ -2,8 +2,6 @@
 
 **VORAFuel: Ship Fuel Consumption Prediction with Observation-Availability-Aware Relational Memory and Operationally Conditioned Autoregressive Learning**
 
-Maintained by **Hyobin Park** ([hbp001](https://github.com/hbp001)).
-
 Code accompanying the Korean manuscript in preparation. No journal acceptance,
 DOI, or publication date is claimed.
 
