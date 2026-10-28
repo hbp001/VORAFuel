@@ -2,7 +2,8 @@ import tempfile
 import unittest
 from pathlib import Path
 import torch
-from vorafuel import VORAFuel
+from vorafuel import VORAFuel, resolve_device
+from unittest.mock import patch
 
 class PublicInterface(unittest.TestCase):
     def setUp(self):
@@ -38,5 +39,23 @@ class PublicInterface(unittest.TestCase):
     def test_invalid_input_rejected(self):
         self.h[0,0,0,0]=float('nan')
         with self.assertRaises(ValueError):self.m(self.h,self.f,self.p)
+
+    def test_explicit_cuda_fails_without_device(self):
+        with patch('torch.cuda.is_available', return_value=False):
+            self.assertEqual(resolve_device('auto').type,'cpu')
+            with self.assertRaises(RuntimeError):resolve_device('cuda')
+
+    @unittest.skipUnless(torch.cuda.is_available(), 'CUDA not available')
+    def test_cuda_checkpoint_forward_and_backward(self):
+        with tempfile.TemporaryDirectory() as folder:
+            p=Path(folder)/'model.pt';torch.save({'state':self.m.policy.state_dict()},p)
+            gpu=VORAFuel.from_checkpoint(p,device='cuda')
+            with torch.inference_mode():cpu=self.m(self.h,self.f,self.p)
+            result=gpu(self.h.cuda(),self.f.cuda(),self.p.cuda())
+            torch.testing.assert_close(cpu,result.cpu(),rtol=2e-4,atol=2e-5)
+            result.mean().backward()
+            grads=[p.grad for p in gpu.parameters() if p.requires_grad]
+            self.assertTrue(any(g is not None for g in grads))
+            self.assertTrue(all(g is None or torch.isfinite(g).all() for g in grads))
 
 if __name__=='__main__':unittest.main()

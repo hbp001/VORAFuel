@@ -1,6 +1,8 @@
 # VORAFuel
 
-**VORAFuel: 관측 가용성을 고려한 관계 메모리와 운항조건부 자기회귀 학습을 통한 선박 연료소모량 예측**
+**VORAFuel: Ship Fuel Consumption Prediction with Observation-Availability-Aware Relational Memory and Operationally Conditioned Autoregressive Learning**
+
+Maintained by **Hyobin Park** ([hbp001](https://github.com/hbp001)).
 
 Code accompanying the Korean manuscript in preparation. No journal acceptance,
 DOI, or publication date is claimed.
@@ -26,8 +28,18 @@ the manuscript scores. With approved private weights and preprocessed inputs:
 
 ```bash
 python vorafuel.py --checkpoint /private/final.pt \
-  --inputs /private/inputs.npz --output /new/location/prediction.npz
+  --inputs /private/inputs.npz --output /new/location/prediction.npz --device auto
 ```
+
+### GPU execution
+
+Install a CUDA-enabled PyTorch 2.7.1 build compatible with your NVIDIA driver.
+`--device auto` uses CUDA when available and CPU otherwise. Use `--device cuda:0`
+to require a specific visible GPU; unavailable CUDA raises an error instead of
+silently falling back. Checkpoint loading, all inference tensors and the model
+are moved together; output arrays are saved on CPU. The Python module also
+supports CUDA forward/backward for task adaptation. Archived CPU reproduction
+scripts preserve the original protocol and are not GPU performance benchmarks.
 
 ## Method and implementation
 
@@ -63,8 +75,8 @@ included. Third-party FM weights must be obtained under their upstream terms.
 
 ## Availability and rights
 
-Data and task-specific weights are provided **on request**, subject to applicable
-provider permissions. Open a repository issue to initiate contact; do not post
+The dataset and task-specific model weights remain **private** and are available
+**on request**, subject to applicable provider permissions. Open a repository issue to initiate contact; do not post
 private data or credentials in the issue. See [access terms](docs/ACCESS.md).
 This code release does not grant rights to KRISO or weather-provider data.
 A code license has not yet been designated by the authors; this is a public source
