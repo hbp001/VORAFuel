@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+private/
+data/
+weights/
+outputs/
+*.pt
+*.pth
+*.safetensors
+*.npz
+*.csv
+*.gz
+*.zip
+.env
+.DS_Store
+._*

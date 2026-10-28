@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "seed": 13,
+      "split": "validation",
+      "windows": 468,
+      "max_abs_difference": 0.0,
+      "checkpoint_sha256": "3a9e00624dbcccb4f1c831cc6234fe0fd0806836e58ce3e7aa043ff9675c6721"
+    },
+    {
+      "seed": 13,
+      "split": "test",
+      "windows": 468,
+      "max_abs_difference": 0.0,
+      "checkpoint_sha256": "3a9e00624dbcccb4f1c831cc6234fe0fd0806836e58ce3e7aa043ff9675c6721"
+    },
+    {
+      "seed": 37,
+      "split": "validation",
+      "windows": 468,
+      "max_abs_difference": 0.0,
+      "checkpoint_sha256": "4d092193a604e9a108047fa7212743a753057c6f8d606d878cc660b57bb25281"
+    },
+    {
+      "seed": 37,
+      "split": "test",
+      "windows": 468,
+      "max_abs_difference": 0.0,
+      "checkpoint_sha256": "4d092193a604e9a108047fa7212743a753057c6f8d606d878cc660b57bb25281"
+    },
+    {
+      "seed": 71,
+      "split": "validation",
+      "windows": 468,
+      "max_abs_difference": 0.0,
+      "checkpoint_sha256": "a12b085dd4b1d29477c2c1fc03496a5a9e5c97930f62bdcbd8273ef08801ce8b"
+    },
+    {
+      "seed": 71,
+      "split": "test",
+      "windows": 468,
+      "max_abs_difference": 0.0,
+      "checkpoint_sha256": "a12b085dd4b1d29477c2c1fc03496a5a9e5c97930f62bdcbd8273ef08801ce8b"
+    }
+  ],
+  "new_training": false,
+  "new_selection": false
+}
