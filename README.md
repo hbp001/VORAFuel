@@ -28,8 +28,18 @@ the manuscript scores. With approved private weights and preprocessed inputs:
 
 ```bash
 python vorafuel.py --checkpoint /private/final.pt \
-  --inputs /private/inputs.npz --output /new/location/prediction.npz
+  --inputs /private/inputs.npz --output /new/location/prediction.npz --device auto
 ```
+
+### GPU execution
+
+Install a CUDA-enabled PyTorch 2.7.1 build compatible with your NVIDIA driver.
+`--device auto` uses CUDA when available and CPU otherwise. Use `--device cuda:0`
+to require a specific visible GPU; unavailable CUDA raises an error instead of
+silently falling back. Checkpoint loading, all inference tensors and the model
+are moved together; output arrays are saved on CPU. The Python module also
+supports CUDA forward/backward for task adaptation. Archived CPU reproduction
+scripts preserve the original protocol and are not GPU performance benchmarks.
 
 ## Method and implementation
 
