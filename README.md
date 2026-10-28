@@ -1,6 +1,8 @@
 # VORAFuel
 
-**VORAFuel: 관측 가용성을 고려한 관계 메모리와 운항조건부 자기회귀 학습을 통한 선박 연료소모량 예측**
+**VORAFuel: Ship Fuel Consumption Prediction with Observation-Availability-Aware Relational Memory and Operationally Conditioned Autoregressive Learning**
+
+Maintained by **Hyobin Park** ([hbp001](https://github.com/hbp001)).
 
 Code accompanying the Korean manuscript in preparation. No journal acceptance,
 DOI, or publication date is claimed.
@@ -63,8 +65,8 @@ included. Third-party FM weights must be obtained under their upstream terms.
 
 ## Availability and rights
 
-Data and task-specific weights are provided **on request**, subject to applicable
-provider permissions. Open a repository issue to initiate contact; do not post
+The dataset and task-specific model weights remain **private** and are available
+**on request**, subject to applicable provider permissions. Open a repository issue to initiate contact; do not post
 private data or credentials in the issue. See [access terms](docs/ACCESS.md).
 This code release does not grant rights to KRISO or weather-provider data.
 A code license has not yet been designated by the authors; this is a public source
